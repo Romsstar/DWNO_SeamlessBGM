@@ -9,18 +9,17 @@ namespace SeamlessBGM;
 [BepInProcess("Digimon World Next Order.exe")]
 public class Plugin : BasePlugin
 {
-    internal const string GUID = "Romsstar.DWNO.SeamlessBGM";
+    internal const string GUID = "SeamlessBGM";
     internal const string PluginName = "SeamlessBGM";
     internal const string PluginVersion = "1.0.0";
     public static ConfigEntry<bool> suppressChaseBGM { get; private set; }
 
     public override void Load()
     {
-        suppressChaseBGM = Config.Bind("General", // Section
-            "SuppressChaseBGM", // Key
-            true, // Default value
-            "Set to true to disable the chaseBGM (default setting). Still plays the notification."); // Description
-
+        suppressChaseBGM = Config.Bind("General",
+            "SuppressChaseBGM",
+            true,
+            "Set to true to disable the chaseBGM (default setting). Still plays the notification.");
         Harmony.CreateAndPatchAll(typeof(Plugin));
     }
 
